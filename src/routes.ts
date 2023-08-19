@@ -1,8 +1,9 @@
 import { RouteRecordRaw } from "vue-router";
-import Home from "@pages/home.vue";
-import Video from "@pages/video.vue";
+
+import AnimePage from "@pages/anime.vue";
+import HomePage from "@pages/home.vue";
 
 export const routes: RouteRecordRaw[] = [
-  { path: '/', component: Home },
-  { path: '/video/:id', component: Video },
+  { path: '/', component: HomePage },
+  { path: '/anime/:id', component: AnimePage },
 ]

@@ -1,34 +1,29 @@
-<i18n>
-{
-  "ru": {
-    "watchingTitle": "Смотрит сейчас",
-    "watchedTitle": "Просмотрено"
-  },
-  "ua": {
-    "watchingTitle": "Дивиться зараз",
-    "watchedTitle": "Переглянуто"
-  },
-  "en": {
-    "watchingTitle": "Watching now",
-    "watchedTitle": "Viewed"
-  }
-}
-</i18n>
-
 <template>
   <container class="mt-5">
-    <div>
-      {{ t('watchingTitle') }}
-    </div>
-    <div>
-      {{ t('watchedTitle') }}
-    </div>
+    <filter-bar class="p-2 sm:p-0" />
+    <anime-list
+      class="p-2 sm:p-0 mt-5"
+      :animes="animeArray"
+    />
   </container>
 </template>
 
 <script setup lang="ts">
-import Container from "@elements/container.vue";
-import { useI18n } from "vue-i18n";
+import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 
-const { t } = useI18n();
+import AnimeList from "@components/anime-list.vue";
+import FilterBar from "@components/settings/filter-bar.vue";
+import Container from "@elements/container.vue";
+
+import { useAnimeStore } from "@stores/animeStore.ts";
+
+const animeStore = useAnimeStore();
+
+const { animeArray } = storeToRefs(animeStore)
+
+onMounted(() => {
+  animeStore.getAllAnime();
+})
+
 </script>

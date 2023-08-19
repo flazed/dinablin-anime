@@ -1,12 +1,14 @@
-import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createApp } from 'vue'
 import { createI18n } from 'vue-i18n'
+import { createRouter, createWebHashHistory } from "vue-router";
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import Icons from './fa.icons.ts';
-import { clickOutside } from "./directives/click-outside.js";
+
 import App from "./App.vue";
+import { clickOutside } from "./directives/click-outside.js";
+import Icons from './fa.icons.ts';
 import { routes } from './routes';
 import './index.css'
 
@@ -20,7 +22,7 @@ const router = createRouter({
 const i18n = createI18n({
   legacy: false,
   locale: 'ru',
-  fallbackLocale: 'en',
+  fallbackLocale: 'ru',
 })
 
 library.add(Icons)

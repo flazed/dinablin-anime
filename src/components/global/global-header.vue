@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import ChangeLang from "@components/settings/changeLang.vue";
 import Container from "@elements/container.vue";
 import DinaBlinLink from "@elements/dina-blin-link.vue";
-import ChangeLang from "@components/settings/changeLang.vue";
 </script>

@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --fix",
+    "types": "vue-tsc --noEmit"
   },
   "dependencies": {
     "pinia": "2.1.6",
@@ -27,6 +29,7 @@
     "@vitejs/plugin-vue": "^4.2.3",
     "autoprefixer": "10.4.14",
     "eslint": "8.46.0",
+    "eslint-plugin-import": "2.28.0",
     "eslint-plugin-vue": "9.16.1",
     "postcss": "8.4.27",
     "tailwindcss": "3.3.3",
