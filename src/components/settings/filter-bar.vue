@@ -20,10 +20,15 @@
 
 <template>
   <div class="flex">
-    <dina-blin-input :placeholder="t('search')" />
+    <dina-blin-input
+      :value="searchQuery"
+      :placeholder="t('search')"
+      class="mr-3 w-full sm:w-auto sm:min-w-[270px]"
+      @input="(e) => searchQuery = (e.target as HTMLInputElement).value"
+    />
     <dina-blin-select
       class="ml-auto min-w-[100px]"
-      custom-template
+      is-custom-template
       :current-value="sortGroupValue"
       :values-list="sortGroupList"
       :on-change="handleSortGroupClick"
@@ -35,7 +40,7 @@
     </dina-blin-select>
     <dina-blin-select
       class="ml-3"
-      custom-template
+      is-custom-template
       :current-value="sortOrderValue"
       :values-list="sortOrderList"
       :on-change="handleSortOrderClick"
@@ -63,7 +68,7 @@ import { OptionProps } from "@globalTypes/props.ts";
 const { t } = useI18n();
 const animeStore = useAnimeStore();
 
-const { sortGroupList, sortGroupValue, sortOrderList, sortOrderValue } = storeToRefs(animeStore);
+const { sortGroupList, sortGroupValue, sortOrderList, sortOrderValue, searchQuery } = storeToRefs(animeStore);
 
 const handleSortGroupClick = (sortGroup: OptionProps) => {
   sortGroupValue.value = sortGroup;

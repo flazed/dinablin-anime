@@ -5,7 +5,7 @@
         <img
           src="/logo.png"
           alt=""
-          class="w-12 animate-heartbeat"
+          class="w-12"
         >
       </div>
       <div class="w-[60%] text-center">

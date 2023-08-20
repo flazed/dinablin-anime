@@ -46,5 +46,5 @@ export interface Anime {
   maxEpisodes: number;
   dateStart: string;
   genres: string[];
-  rating?: number;
+  rating: number;
 }

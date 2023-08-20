@@ -20,7 +20,7 @@
     :to="`anime/${link}`"
     class="flex flex-col transition-transform duration-300 hover:-translate-y-2"
   >
-    <div class="flex relative">
+    <div class="flex relative grow">
       <img
         v-if="isPreviewExist"
         class="rounded-lg w-full object-cover"
@@ -47,22 +47,29 @@
           {{ t('animeFilmType') }}
         </template>
       </div>
-      <div class="absolute right-1.5 bottom-1 p-1 rounded-md border bg-white font-bold text-gray-700 text-sm">
+      <div class="absolute right-1.5 bottom-1 p-1 rounded-md border bg-white font-bold text-gray-700">
         <template v-if="watched">
-          {{ rating }}
+          <span class="text-lg mr-1">
+            {{ rating }}
+          </span>
           <font-awesome-icon
             class="text-red-500"
             :icon="['fas', 'heart']"
           />
         </template>
         <template v-else>
-          {{ t('ongoingWatch') }}
+          <span class="text-sm">
+            {{ t('ongoingWatch') }}
+          </span>
         </template>
       </div>
     </div>
     <div class="flex flex-col">
-      <span class="text-lg text-gray-800 font-bold">{{ title }}</span>
-      <span class="text-sm text-gray-500"><font-awesome-icon :icon="['far', 'calendar']" /> {{ d(dateStart) }}</span>
+      <span
+        class="text-lg text-gray-800 font-bold truncate"
+        :title="title"
+      >{{ title }}</span>
+      <span class="text-sm text-gray-500"><font-awesome-icon :icon="['fas', 'calendar']" /> {{ d(dateStart) }}</span>
     </div>
   </router-link>
 </template>
@@ -76,7 +83,7 @@ import { server } from "@api/api.ts";
 import { Anime } from "@globalTypes/anime.ts";
 import { DataBody } from "@globalTypes/api.ts";
 
-import Defaultimage from '@assets/defaultCardImage.png';
+import Defaultimage from "@assets/defaultCardImage.png";
 
 const props = defineProps<{
   anime: DataBody<Anime>

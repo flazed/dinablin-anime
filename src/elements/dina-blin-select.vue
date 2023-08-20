@@ -10,7 +10,7 @@
     >
       <span class="grow">
         <slot
-          v-if="customTemplate"
+          v-if="isCustomTemplate"
           name="option-content"
           :content="currentValue.content"
         />
@@ -41,7 +41,7 @@
         @click="() => handleOptionClick(option)"
       >
         <slot
-          v-if="customTemplate"
+          v-if="isCustomTemplate"
           name="option-content"
           v-bind="option"
         />
@@ -63,7 +63,7 @@ interface SelectProps {
   valuesList: OptionProps[];
   onChange(option: OptionProps): void;
   border?: string;
-  customTemplate?: boolean;
+  isCustomTemplate?: boolean;
 }
 
 const props = defineProps<SelectProps>();

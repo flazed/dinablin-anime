@@ -1,10 +1,14 @@
-import { faCalendar } from '@fortawesome/free-regular-svg-icons'
-import { faArrowDownShortWide, faArrowDownWideShort, faChevronUp, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faDiscord, faTelegram, faTwitch } from "@fortawesome/free-brands-svg-icons";
+import { faArrowDownShortWide, faArrowDownWideShort, faBell, faCalendar, faChevronUp, faHeart } from "@fortawesome/free-solid-svg-icons"
 
 export default {
   faChevronUp,
   faArrowDownShortWide,
   faArrowDownWideShort,
   faCalendar,
-  faHeart
+  faHeart,
+  faTwitch,
+  faDiscord,
+  faTelegram,
+  faBell
 }

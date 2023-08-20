@@ -17,9 +17,9 @@ import { OptionProps } from "@globalTypes/props.ts";
 const { locale } = useI18n()
 
 const langList = <OptionProps[]>[
-  { value: 'ru', content: 'RU' },
-  { value: 'ua', content: 'UA' },
-  { value: 'en', content: 'EN' }
+  { value: "ru", content: "RU" },
+  { value: "ua", content: "UA" },
+  { value: "en", content: "EN" }
 ]
 const currentLang = ref<OptionProps>(langList[0]);
 

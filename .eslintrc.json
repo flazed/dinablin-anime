@@ -83,6 +83,13 @@
       }
     ],
     "import/no-unresolved": "off",
+    "@typescript-eslint/quotes": [
+      "error",
+      "double",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
     "vue/attributes-order": [
       "error",
       {

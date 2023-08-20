@@ -1,9 +1,9 @@
 <template>
-  <container class="mt-5">
+  <container class="mt-5 p-2">
     <filter-bar class="p-2 sm:p-0" />
     <anime-list
-      class="p-2 sm:p-0 mt-5"
-      :animes="animeArray"
+      class="sm:p-0 mt-5"
+      :animes="duplicateAnimeArray"
     />
   </container>
 </template>
@@ -20,7 +20,7 @@ import { useAnimeStore } from "@stores/animeStore.ts";
 
 const animeStore = useAnimeStore();
 
-const { animeArray } = storeToRefs(animeStore)
+const { duplicateAnimeArray } = storeToRefs(animeStore)
 
 onMounted(() => {
   animeStore.getAllAnime();

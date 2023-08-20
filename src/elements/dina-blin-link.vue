@@ -9,7 +9,9 @@
   <a
     v-else
     :href="link"
-    class="font-bold"
+    class="font-bold relative inline-flex justify-center px-1.5 transition-colors hover:text-white hover:before:h-full before:content-[''] before:absolute before:bottom-0 before:w-full before:h-0 before:-skew-x-12 before:-z-10 before:transition-[height]"
+    :class="{'before:bg-black': !isCustomColor}"
+    target="_blank"
   >
     <slot />
   </a>
@@ -19,5 +21,6 @@
 defineProps<{
   link: string;
   isExternalLink?: boolean;
+  isCustomColor?: boolean;
 }>()
 </script>
