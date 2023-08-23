@@ -7,9 +7,8 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 
 import App from "./App.vue";
-// @ts-ignore
-import { clickOutside } from "./directives/click-outside.js";
-import Icons from "./fa.icons.ts";
+import { clickOutside } from "./directives/click-outside";
+import Icons from "./fa.icons";
 import { routes } from "./routes";
 import "./index.css"
 

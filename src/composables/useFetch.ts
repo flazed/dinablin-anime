@@ -1,5 +1,5 @@
-import { Response } from "@globalTypes/api.ts";
+import { apiPromise } from "@globalTypes/api.ts";
 
-export function useFetch<T>(url: string): Promise<Response<T>> {
+export function useFetch<T>(url: string): apiPromise<T> {
   return fetch(url).then(data => data.json())
 }

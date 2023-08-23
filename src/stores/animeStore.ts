@@ -1,9 +1,7 @@
 import { defineStore } from "pinia";
 import { ref, watch } from "vue";
 
-import { api } from "@api/api.ts";
-
-import { useFetch } from "@composables/useFetch.ts";
+import { AnimeApi } from "@api/api.ts";
 
 import { Anime } from "@globalTypes/anime.ts";
 import { DataBody } from "@globalTypes/api.ts";
@@ -24,13 +22,6 @@ export const useAnimeStore = defineStore("anime", () => {
   const sortGroupValue = ref(sortGroupList.value[0]);
   const sortOrderValue = ref(sortOrderList.value[0]);
   const searchQuery = ref<string>("");
-
-  async function getAllAnime() {
-    const animes = await useFetch<DataBody<Anime>[]>(`${api}/?populate=preview`)
-    animeArray.value = animes.data ?? [];
-    duplicateAnimeArray.value = Object.assign(animeArray.value);
-    sortAnimeList()
-  }
 
   function findAnime(search: string) {
     if(search.trim().length !== 0) {
@@ -71,6 +62,19 @@ export const useAnimeStore = defineStore("anime", () => {
     })
   }
 
+  async function getAllAnime() {
+    const animes = await AnimeApi.getAllAnime();
+    animeArray.value = animes.data ?? [];
+    duplicateAnimeArray.value = Object.assign(animeArray.value);
+    sortAnimeList()
+  }
+
+
+  async function getAnimeById(id: string): Promise<DataBody<Anime> | null> {
+    const anime = await AnimeApi.getOneAnime(id);
+    return anime.data ? anime.data[0] : null;
+  }
+
   watch(searchQuery, curr => {
     findAnime(curr);
   })
@@ -88,5 +92,6 @@ export const useAnimeStore = defineStore("anime", () => {
     sortOrderValue,
     searchQuery,
     getAllAnime,
+    getAnimeById
   }
 })

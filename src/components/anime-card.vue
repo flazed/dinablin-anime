@@ -1,15 +1,15 @@
 <i18n>
 {
   "ru": {
-    "animeFilmType": "Фильм",
+    "animeTypeFilm": "Фильм",
     "ongoingWatch": "Сейчас смотрит"
   },
   "ua": {
-    "animeFilmType": "Фільм",
+    "animeTypeFilm": "Фільм",
     "ongoingWatch": "Зараз дивиться"
   },
   "en": {
-    "animeFilmType": "Movie",
+    "animeTypeFilm": "Movie",
     "ongoingWatch": "Watching now"
   }
 }
@@ -38,13 +38,16 @@
         >
       </div>
       <div class="absolute left-1.5 bottom-1 p-1 rounded-md border bg-white font-bold text-gray-700 text-sm">
-        <template v-if="maxEpisodes !== 1">
+        <template v-if="type === AnimeType.Movie">
+          {{ t('animeTypeFilm') }}
+        </template>
+        <template v-if="type === AnimeType.OVA">
+          OVA
+        </template>
+        <template v-else>
           {{ nowEpisodes }}
           /
           {{ maxEpisodes }}
-        </template>
-        <template v-else>
-          {{ t('animeFilmType') }}
         </template>
       </div>
       <div class="absolute right-1.5 bottom-1 p-1 rounded-md border bg-white font-bold text-gray-700">
@@ -78,9 +81,10 @@
 import { onMounted, ref, toRefs } from "vue";
 import { useI18n } from "vue-i18n";
 
-import { server } from "@api/api.ts";
+import { server } from "@api/api.consts.ts";
 
-import { Anime } from "@globalTypes/anime.ts";
+
+import { Anime, AnimeType } from "@globalTypes/anime.ts";
 import { DataBody } from "@globalTypes/api.ts";
 
 import Defaultimage from "@assets/defaultCardImage.png";
@@ -99,6 +103,7 @@ const {
     maxEpisodes,
     dateStart,
     rating,
+    type,
     preview: {
       data: { attributes: { url } } }
     }

@@ -46,6 +46,7 @@
       Develop by
       <dina-blin-link
         is-external-link
+        is-custom-color
         link="https://t.me/flazed"
         class="font-bold text-rose-600 mx-1 before:bg-rose-600"
       >

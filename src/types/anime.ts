@@ -1,12 +1,32 @@
 import { DataBody } from "@globalTypes/api.ts";
+export interface Anime {
+  id: number;
+  link: string;
+  title: string;
+  type: AnimeType;
+  franchise: {
+    data: DataBody<Franchise>;
+  };
+  preview: {
+    data: DataBody<Preview>
+  };
+  watched: boolean;
+  nowEpisodes: number;
+  maxEpisodes: number;
+  dateStart: string;
+  genres: string[];
+  rating: number;
+}
 
-type ImageFormats = ".jpg" | ".jpeg" | ".png" | ".webp";
-type MimeImageFormats = "image/jpeg" | "image/png" | "image/webp";
+export enum AnimeType {
+  Episodes = "Episodes",
+  Movie = "Movie",
+  OVA = "OVA"
+}
 
 interface Preview {
   alternativeText: string | null;
   caption: string | null;
-  createdAt: string;
   ext: ImageFormats;
   formats: {
     thumbnail: {
@@ -29,22 +49,14 @@ interface Preview {
   provider: string;
   provider_metadata: null;
   size: number;
-  updatedAt: string;
   url: string;
   width: number;
 }
 
-export interface Anime {
-  id: number;
-  link: string;
+type ImageFormats = ".jpg" | ".jpeg" | ".png" | ".webp";
+type MimeImageFormats = "image/jpeg" | "image/png" | "image/webp";
+
+export interface Franchise {
   title: string;
-  preview: {
-    data: DataBody<Preview>
-  };
-  watched: boolean;
-  nowEpisodes: number;
-  maxEpisodes: number;
-  dateStart: string;
-  genres: string[];
-  rating: number;
+  animes: DataBody<Anime>[];
 }
