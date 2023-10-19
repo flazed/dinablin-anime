@@ -11,8 +11,8 @@
 <script setup lang="ts">
 import AnimeCard from "@components/anime-card.vue";
 
-import { Anime } from "@globalTypes/anime.ts";
-import { DataBody } from "@globalTypes/api.ts";
+import { Anime } from "@/types/anime.ts";
+import { DataBody } from "@/types/api.ts";
 
 defineProps<{
   animes: DataBody<Anime>[];

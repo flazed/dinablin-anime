@@ -20,14 +20,14 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
+      "@/*": ["./src/*"],
       "@api/*": ["./src/api/*"],
       "@assets/*": ["./src/assets/*"],
       "@stores/*": ["./src/stores/*"],
       "@components/*": ["./src/components/*"],
       "@composables/*": ["./src/composables/*"],
       "@elements/*": ["./src/elements/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@globalTypes/*": ["./src/types/*"]
+      "@pages/*": ["./src/pages/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],

@@ -63,7 +63,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import { useAnimeStore } from "@stores/animeStore.ts";
 
-import { OptionProps } from "@globalTypes/props.ts";
+import { OptionProps } from "@/types/props.ts";
 
 const { t } = useI18n();
 const animeStore = useAnimeStore();

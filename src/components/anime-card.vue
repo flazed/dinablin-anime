@@ -38,11 +38,8 @@
         >
       </div>
       <div class="absolute left-1.5 bottom-1 p-1 rounded-md border bg-white font-bold text-gray-700 text-sm">
-        <template v-if="type === AnimeType.Movie">
-          {{ t('animeTypeFilm') }}
-        </template>
-        <template v-if="type === AnimeType.OVA">
-          OVA
+        <template v-if="type !== AnimeType.Episodes">
+          <anime-type-text :type="type" />
         </template>
         <template v-else>
           {{ nowEpisodes }}
@@ -78,14 +75,13 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, toRefs } from "vue";
+import { defineAsyncComponent, onMounted, ref, toRefs } from "vue";
 import { useI18n } from "vue-i18n";
 
 import { server } from "@api/api.consts.ts";
 
-
-import { Anime, AnimeType } from "@globalTypes/anime.ts";
-import { DataBody } from "@globalTypes/api.ts";
+import { Anime, AnimeType } from "@/types/anime.ts";
+import { DataBody } from "@/types/api.ts";
 
 import Defaultimage from "@assets/defaultCardImage.png";
 
@@ -120,4 +116,6 @@ onMounted(async () => {
   };
   previewImg.src = `${server}${url}`;
 })
+
+const AnimeTypeText = defineAsyncComponent(() => import("@components/anime-type-text.vue"))
 </script>

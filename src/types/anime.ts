@@ -1,12 +1,9 @@
-import { DataBody } from "@globalTypes/api.ts";
+import { DataBody } from "@/types/api.ts";
 export interface Anime {
   id: number;
   link: string;
   title: string;
   type: AnimeType;
-  franchise: {
-    data: DataBody<Franchise>;
-  };
   preview: {
     data: DataBody<Preview>
   };
@@ -16,6 +13,15 @@ export interface Anime {
   dateStart: string;
   genres: string[];
   rating: number;
+}
+
+export interface AnimePage extends Anime {
+  franchise: {
+    data: DataBody<Franchise>;
+  };
+  episodes: {
+    data: DataBody<Episode>[];
+  }
 }
 
 export enum AnimeType {
@@ -59,4 +65,11 @@ type MimeImageFormats = "image/jpeg" | "image/png" | "image/webp";
 export interface Franchise {
   title: string;
   animes: DataBody<Anime>[];
+}
+
+interface Episode {
+  key: string;
+  link: string;
+  linkTG: string;
+  name: string;
 }

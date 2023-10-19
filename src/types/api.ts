@@ -1,8 +1,8 @@
-import { Anime, Franchise } from "@globalTypes/anime.ts";
+import { Anime, AnimePage, Franchise } from "@/types/anime.ts";
 
-export interface AnimeApiType {
+export interface AnimeAPIType {
   getAllAnime(): apiPromise<DataBody<Anime>[]>;
-  getOneAnime(id: string): apiPromise<DataBody<Anime>[]>;
+  getOneAnime(id: string): apiPromise<DataBody<AnimePage>[]>;
   getAnimeFranchise(id: number): apiPromise<DataBody<Franchise>>;
 }
 

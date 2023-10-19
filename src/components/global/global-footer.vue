@@ -1,5 +1,5 @@
 <template>
-  <div class="border-t-2 py-3 px-2 text-center">
+  <div class="border-t-2 mt-3 py-3 px-2 text-center">
     <container class="grid grid-cols-1 sm:grid-cols-2 md:flex md:justify-center text-center text-lg">
       <span class="mr-2 text-orange-600">
         <font-awesome-icon :icon="['fas', 'bell']" />
@@ -7,7 +7,7 @@
           is-external-link
           is-custom-color
           class="ml-1.5 before:bg-orange-600"
-          link="https://dinablin.com/"
+          :link="socialsLinks.site"
         >Самая важная ссылка
         </dina-blin-link>
       </span>
@@ -17,7 +17,7 @@
           is-external-link
           is-custom-color
           class="ml-1.5 before:bg-[#6441a4]"
-          link="https://www.twitch.tv/dinablin"
+          :link="socialsLinks.twitch"
         >Twitch
         </dina-blin-link>
       </span>
@@ -27,7 +27,7 @@
           is-external-link
           is-custom-color
           class="ml-1.5 before:bg-[#7289DA]"
-          link="https://discord.com/invite/dinablin"
+          :link="socialsLinks.discord"
         >Discord
         </dina-blin-link>
       </span>
@@ -37,7 +37,7 @@
           is-external-link
           is-custom-color
           class="ml-1.5 before:bg-[#2AABEE]"
-          link="https://t.me/dinablin"
+          :link="socialsLinks.telegram"
         >Telegram
         </dina-blin-link>
       </span>
@@ -63,6 +63,7 @@
 </template>
 
 <script setup lang="ts">
+import { socialsLinks } from "@/global.consts.ts";
 import Container from "@elements/container.vue";
 import DinaBlinLink from "@elements/dina-blin-link.vue";
 </script>

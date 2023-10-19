@@ -38,7 +38,7 @@
         "groups": ["builtin", "external", "parent", "sibling", "index"],
         "pathGroups": [
           {
-            "pattern": "@globalTypes/**",
+            "pattern": "@/**",
             "group": "index",
             "position": "after"
           },

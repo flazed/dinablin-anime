@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
-import { AnimeApi } from "@api/api.ts";
+import { AnimeAPI } from "@api/api.ts";
 
-import { Anime } from "@globalTypes/anime.ts";
-import { DataBody } from "@globalTypes/api.ts";
-import { AnimeSortGroupList, OptionProps, OrderBy } from "@globalTypes/props.ts";
+import { Anime, AnimePage } from "@/types/anime.ts";
+import { DataBody } from "@/types/api.ts";
+import { AnimeSortGroupList, OptionProps, OrderBy } from "@/types/props.ts";
 
 export const useAnimeStore = defineStore("anime", () => {
   const sortGroupList = ref<OptionProps[]>([
@@ -63,25 +63,16 @@ export const useAnimeStore = defineStore("anime", () => {
   }
 
   async function getAllAnime() {
-    const animes = await AnimeApi.getAllAnime();
+    const animes = await AnimeAPI.getAllAnime();
     animeArray.value = animes.data ?? [];
     duplicateAnimeArray.value = Object.assign(animeArray.value);
     sortAnimeList()
   }
 
-
-  async function getAnimeById(id: string): Promise<DataBody<Anime> | null> {
-    const anime = await AnimeApi.getOneAnime(id);
+  async function getAnimeById(id: string): Promise<DataBody<AnimePage> | null> {
+    const anime = await AnimeAPI.getOneAnime(id);
     return anime.data ? anime.data[0] : null;
   }
-
-  watch(searchQuery, curr => {
-    findAnime(curr);
-  })
-
-  watch([sortGroupValue, sortOrderValue], () => {
-    sortAnimeList()
-  })
 
   return {
     animeArray,
@@ -91,6 +82,8 @@ export const useAnimeStore = defineStore("anime", () => {
     sortOrderList,
     sortOrderValue,
     searchQuery,
+    findAnime,
+    sortAnimeList,
     getAllAnime,
     getAnimeById
   }

@@ -56,7 +56,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import { OptionProps } from "@globalTypes/props.ts";
+import { OptionProps } from "@/types/props.ts";
 
 interface SelectProps {
   currentValue: OptionProps;

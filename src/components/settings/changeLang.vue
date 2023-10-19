@@ -12,7 +12,7 @@ import { useI18n } from "vue-i18n";
 
 import DinaBlinSelect from "@elements/dina-blin-select.vue";
 
-import { OptionProps } from "@globalTypes/props.ts";
+import { OptionProps } from "@/types/props.ts";
 
 const { locale } = useI18n()
 
